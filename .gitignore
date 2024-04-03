@@ -1,0 +1,26 @@
+# Archivos de compilación
+bin/
+obj/
+
+# Archivos de configuración específicos del usuario
+*.user
+*.suo
+*.cache
+
+# Dependencias de NuGet
+packages/
+
+# Carpeta de salida de la solución
+*.suo
+*.user
+*.sln.docstates
+
+# Logs y archivos temporales
+*.log
+*.vscode/
+*.vs/
+*.nupkg
+*.resharper
+*.resharper.user
+*.bak
+*~
