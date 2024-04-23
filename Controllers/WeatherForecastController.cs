@@ -1,22 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
-using webApi.net;
 
 namespace webapi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+[Route("api/[controller]")]
+public class WeatherPruebaController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-    private readonly ILogger<WeatherForecastController> _logger;
+    private readonly ILogger<WeatherPruebaController> _logger;
 
     private static List<WeatherForecast> ListWeatherForecast = new List<WeatherForecast>();
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherPruebaController(ILogger<WeatherPruebaController> logger)
     {
         _logger = logger;
 
@@ -24,7 +23,7 @@ public class WeatherForecastController : ControllerBase
         {
             ListWeatherForecast = Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
-                Date = new DateOnly(DateTime.Now.AddDays(index).Year, DateTime.Now.AddDays(index).Month, DateTime.Now.AddDays(index).Day),
+                Date = DateTime.Now.AddDays(index),
                 TemperatureC = Random.Shared.Next(-20, 55),
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
@@ -32,10 +31,13 @@ public class WeatherForecastController : ControllerBase
         }
     }
 
-
     [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    [Route("Get/weatherforecast")]
+    [Route("Get/weatherforecast2")]
+    [Route("[action]")]
+    public IEnumerable<WeatherForecast> GetW()
     {
+        _logger.LogInformation("Retornando la lista de weatherforecast");
         return ListWeatherForecast;
     }
 
