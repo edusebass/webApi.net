@@ -4,18 +4,18 @@ namespace webapi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class WeatherPruebaController : ControllerBase
+public class WeatherForecastController : ControllerBase
 {
     private static readonly string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
-    private readonly ILogger<WeatherPruebaController> _logger;
+    private readonly ILogger<WeatherForecastController> _logger;
 
     private static List<WeatherForecast> ListWeatherForecast = new List<WeatherForecast>();
 
-    public WeatherPruebaController(ILogger<WeatherPruebaController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger)
     {
         _logger = logger;
 
