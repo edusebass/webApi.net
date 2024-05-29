@@ -1,3 +1,4 @@
+using webapi;
 using webapi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IHelloWorldService>(p => new HelloWorldService());
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<ITareasService, TareasService>();
-
+builder.Services.AddSqlServer<TareasContext>("");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
